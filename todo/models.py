@@ -1,5 +1,5 @@
 from django.db import models
-
+from rest_framework.reverse import reverse as api_reverse
 
 class Task(models.Model):
     """Task model for adding reterving tasks."""
@@ -16,3 +16,6 @@ class Task(models.Model):
 
     class Meta:
         ordering = ['is_completed', 'created_on']
+
+    def get_api_url(self, request=None):
+        return api_reverse("todo:task-RUD", kwargs={'pk': self.pk}, request=request)

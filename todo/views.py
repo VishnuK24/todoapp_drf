@@ -29,6 +29,9 @@ class TaskListAPIView(mixins.CreateModelMixin, generics.ListAPIView):
     def post(self, request, *args, **kwargs):
         return self.create(request, *args, **kwargs)
 
+    def get_serializer_context(self, *args, **kwargs):
+        return {"request": self.request}
+
 
 class TaskRUDAPIView(generics.RetrieveUpdateDestroyAPIView):
     """
@@ -37,3 +40,6 @@ class TaskRUDAPIView(generics.RetrieveUpdateDestroyAPIView):
 
     serializer_class = TaskSerializer
     queryset = Task.objects.all()
+
+    def get_serializer_context(self, *args, **kwargs):
+        return {"request": self.request}

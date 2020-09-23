@@ -6,9 +6,15 @@ from .models import Task
 class TaskListSerializer(serializers.ModelSerializer):
     """TaskListSerializer for list Task instance"""
 
+    url = serializers.SerializerMethodField(read_only=True)
+
     class Meta:
         model = Task
-        fields = ['id', 'title', 'descreption', 'is_completed']
+        fields = ['url', 'id', 'title', 'descreption', 'is_completed']
+
+    def get_url(self, obj):
+        request = self.context.get("request")
+        return obj.get_api_url(request=request)
 
 
 class TaskSerializer(serializers.ModelSerializer):

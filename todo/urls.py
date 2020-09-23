@@ -2,6 +2,7 @@ from django.urls import include, path
 from rest_framework import routers
 from todo import views
 
+app_name = 'todo'
 
 urlpatterns = [
     path('', views.TaskListAPIView.as_view(), name='task-listcreate'),
