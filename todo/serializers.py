@@ -10,7 +10,7 @@ class TaskListSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Task
-        fields = ['url', 'id', 'title', 'descreption', 'is_completed']
+        fields = ['url', 'id', 'title', 'description', 'is_completed']
 
     def get_url(self, obj):
         request = self.context.get("request")

@@ -5,7 +5,6 @@ from todo import views
 app_name = 'todo'
 
 urlpatterns = [
-    path('', views.TaskListAPIView.as_view(), name='task-listcreate'),
-    path('<int:pk>/', views.TaskRUDAPIView.as_view(), name='task-RUD'),
-    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
+    path('', views.TaskListAPIView.as_view(), name='list'),
+    path('<int:pk>/', views.TaskRUDAPIView.as_view(), name='detail'),
 ]

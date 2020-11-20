@@ -16,7 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import include, path
 
+from todo.views import TodoView
+
 urlpatterns = [
+    path('', TodoView.as_view()),
     path('admin/', admin.site.urls),
-    path('todo/', include('todo.urls')),
+    path('todo/', include('todo.urls', namespace='api-todo')),
+    path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]
